@@ -1,29 +1,36 @@
-
+import java.util.Scanner;
 
 public class Madlibs {
     
     public static void main(String[] args) 
     {
 
-        String madlib1 = "I went to the animal <noun>, the <plural_noun> and the <number> beasts were there.";
-        // String madlib2 = "Once upon a time in a <adjective> land, a <noun> <adverb> grew.";
-        // String madlib3 = "There was a time when <plural_noun> would roam the <noun> and <verb>";
-        // Scanner sc = new Scanner(System.in);
-        // System.out.print("enter name: ");
+        String madlib = "I went to the animal <noun>, the <plural_noun> and the <number> beasts were there.";
+        // madlib = "Once upon a time in a <adjective> land, a <noun> <adverb> grew.";
+        // madlib = "There was a time when <plural_noun> would roam the <noun> and <verb>";
+        Scanner sc = new Scanner(System.in);
 
-        // String name = sc.nextLine();
-        // System.out.println("username: " + name);
+        // find where each speech keyword starts and ends
+        int speech1open = madlib.indexOf("<");
+        int speech1close = madlib.indexOf(">");
+        int speech2open = madlib.indexOf("<", speech1open + 1);
+        int speech2close = madlib.indexOf(">", speech1close + 1);
+        int speech3open = madlib.indexOf("<", speech2open + 1);
+        int speech3close = madlib.indexOf(">", speech2close + 1);
 
-        int speech1open = madlib1.indexOf("<");
-        int speech1close = madlib1.indexOf(">");
-        int speech2open = madlib1.indexOf("<", madlib1.indexOf("<") + 1);
-        int speech2close = madlib1.indexOf(">", madlib1.indexOf(">") + 1);
+        //get user input for speech keywords
+        System.out.print("Enter a " + madlib.substring(speech1open +1, speech1close) + ": ");
+        String userSpeech1 = sc.nextLine();
 
-        int speech1length = speech1close - speech1open;
-        int speech2length = speech2close - speech2open;
+        System.out.print("Enter a " + madlib.substring(speech2open +1, speech2close) + ": ");
+        String userSpeech2 = sc.nextLine();
 
-        System.out.println(speech1length);
-        System.out.println(speech2length);
+        System.out.print("Enter a " + madlib.substring(speech3open +1, speech3close) + ": ");
+        String userSpeech3 = sc.nextLine();
+
+        
+
+
 
 
 
